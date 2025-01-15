@@ -1,0 +1,24 @@
+permissions:
+  scopes:
+    - read:page:confluence
+    - write:page:confluence
+    - storage:app
+modules:
+  macro:
+    - key: macro-render-issue-confluence-ui-kit-custom-config-macro
+      resource: main
+      render: native
+      resolver:
+        function: resolver
+      title: macro-render-issue
+      config: true
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs22.x
+  id: ari:cloud:ecosystem::app/0eb5b1df-4089-4dc3-bc26-5bbe255c59bf
