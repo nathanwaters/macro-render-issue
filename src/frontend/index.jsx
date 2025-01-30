@@ -26,22 +26,32 @@ const Config = () => {
 
   return (
     <>
+      <Label labelFor="prompt">Enter anything here...</Label>
       <Textfield id="prompt" name="prompt" />
       {hasFields && (
         <>
-          <Label labelFor="issue">Updating this will re-render</Label>
-          <Textfield id="issue" name="issue" placeholder="Text..." />
+          <Label labelFor="dynamic">
+            This renders a dynamic field, update value to see re-render flicker
+            issue...
+          </Label>
+          <Textfield id="dynamic" name="dynamic" placeholder="Text..." />
         </>
       )}
     </>
   );
 };
 
-const App = () => (
-  <>
-    <Text>Edit this</Text>
-  </>
-);
+const App = () => {
+  const config = useConfig();
+  const dynamicField = config?.dynamic;
+
+  return (
+    <>
+      <Text>1. Edit this macro</Text>
+      <Text>2. Dynamic field value should update live: {dynamicField}</Text>
+    </>
+  );
+};
 
 ForgeReconciler.render(<App />);
 ForgeReconciler.addConfig(<Config />);
