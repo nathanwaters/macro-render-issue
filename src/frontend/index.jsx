@@ -26,13 +26,13 @@ const Config = () => {
 
   return (
     <>
-      <Label labelFor="prompt">Enter anything here...</Label>
+      <Label labelFor="prompt">2. Enter anything here...</Label>
       <Textfield id="prompt" name="prompt" />
       {hasFields && (
         <>
           <Label labelFor="dynamic">
-            This renders a dynamic field, update value to see re-render flicker
-            issue...
+            3. This renders a dynamic field, update value to see re-render
+            flicker issue...
           </Label>
           <Textfield id="dynamic" name="dynamic" placeholder="Text..." />
         </>
@@ -48,7 +48,9 @@ const App = () => {
   return (
     <>
       <Text>1. Edit this macro</Text>
-      <Text>2. Dynamic field value should update live: {dynamicField}</Text>
+      {dynamicField && (
+        <Text>4. Dynamic field value should update live: {dynamicField}</Text>
+      )}
     </>
   );
 };
