@@ -21,4 +21,4 @@ resources:
 app:
   runtime:
     name: nodejs22.x
-  id: ari:cloud:ecosystem::app/0eb5b1df-4089-4dc3-bc26-5bbe255c59bf
+  id: ari:cloud:ecosystem::app/b5800eeb-b30b-45c9-b2af-c2f367279a59

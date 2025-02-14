@@ -4,6 +4,7 @@ import ForgeReconciler, {
   useContentProperty,
   Text,
   Textfield,
+  CheckboxGroup,
   useConfig,
 } from "@forge/react";
 import { invoke } from "@forge/bridge";
@@ -30,11 +31,24 @@ const Config = () => {
       <Textfield id="prompt" name="prompt" />
       {hasFields && (
         <>
+          <CheckboxGroup
+            name="toggle"
+            options={[
+              {
+                value: "toggle",
+                label: "4. User needs to toggle this to update prefilled value",
+              },
+            ]}
+          />
           <Label labelFor="dynamic">
-            3. This renders a dynamic field, update value to see re-render
-            flicker issue...
+            3. Dynamic Field with prefilled value
           </Label>
-          <Textfield id="dynamic" name="dynamic" placeholder="Text..." />
+          <Textfield
+            id="dynamic"
+            name="dynamic"
+            placeholder="Text..."
+            defaultValue="Default Value" // I'd like to see this update live
+          />
         </>
       )}
     </>
@@ -49,7 +63,9 @@ const App = () => {
     <>
       <Text>1. Edit this macro</Text>
       {dynamicField && (
-        <Text>4. Dynamic field value should update live: {dynamicField}</Text>
+        <Text>
+          5. Dynamic defaultValue value should update live: {dynamicField}
+        </Text>
       )}
     </>
   );
